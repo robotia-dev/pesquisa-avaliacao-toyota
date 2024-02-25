@@ -51,7 +51,7 @@ const IndexPage = () => {
   }
 
   return (
-    <div className="flex justify-center overflow bg-gray-50 py-6 sm:py-12 ">
+    <div className="flex justify-center overflow py-6 sm:py-12 ">
       <div className="mx-auto w-full max-w-lg">
 
         <form id="npsform" onSubmit={handleSubmit}>
