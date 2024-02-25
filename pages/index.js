@@ -64,9 +64,9 @@ const IndexPage = () => {
               </h2>
 
               <div className="c-card flex bg-white shadow-xl border rounded-xl">
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col">
                   <div className='bg-red-500 p-2 text-center text-white rounded-tl-lg'>  Destratores</div>
-                  <div className='flex'>
+                  <div className='flex justify-between'>
 
                     <div>
 
@@ -232,9 +232,9 @@ const IndexPage = () => {
 
                   </div>
                 </div>
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col">
                   <div className='bg-yellow-500 p-2 text-center text-white '>  Neutros </div>
-                  <div className='flex'>
+                  <div className='flex justify-between'>
 
                     <div>
 
@@ -285,9 +285,9 @@ const IndexPage = () => {
 
                   </div>
                 </div>
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col justify-items-stretch">
                   <div className='bg-green-500 p-2 text-center text-white rounded-tr-lg'>  Promotores </div>
-                  <div className='flex'>
+                  <div className='flex justify-between'>
 
                     <div>
 
