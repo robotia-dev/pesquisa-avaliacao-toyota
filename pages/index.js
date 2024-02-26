@@ -334,14 +334,16 @@ const IndexPage = () => {
             <h2 className="font-medium text-center p-9">
               Gostaria de deixar uma sugestão?
             </h2>
-            <div className=' w-full sm:w-full md:w-full lg:w-2/5'>
-              <textarea
+            <div className='w-screen sm:w-full md:w-full lg:w-3/5'>
+             <div className="flex mx-4">
+             <textarea
                 name="sugestao"
                 rows="4"
-                className="w-full rounded-md border bg-white shadow-xl border-gray-400 focus:border-indigo-500 p-2"
+                className="w-screen rounded-md border bg-white shadow-xl border-gray-400 focus:border-indigo-500 p-2"
                 placeholder="escreva sua Sugestão..."
               />
-            <div className="relative"> <a href="#!" onClick={handleBack} className="absolute top-0 right-0 navigate underline text-gray-500 text-sm" data-step="1">  Voltar</a> </div>
+             </div>
+            <div className="relative mr-5 mt-2"> <a href="#!" onClick={handleBack} className="absolute top-0 right-0 navigate underline text-gray-500 text-sm" data-step="1">  Voltar</a> </div>
             </div>
 
             <div className="flex justify-center pt-9">
