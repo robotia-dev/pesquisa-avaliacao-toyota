@@ -334,7 +334,7 @@ const IndexPage = () => {
             <h2 className="font-medium text-center p-9">
               Gostaria de deixar uma sugestão?
             </h2>
-            <div className='w-96'>
+            <div className='w-96 md:w-full'>
               <textarea
                 name="sugestao"
                 rows="4"
