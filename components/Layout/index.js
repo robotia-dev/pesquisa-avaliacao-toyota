@@ -4,9 +4,9 @@ import Footer from '../Footer'
 
 const Layout = ({ children }) => {
     return (
-        <div className="antialiased w-full ">
+        <div className="antialiased ">
             <Header />
-            <main className="flex justify-center">
+            <main className="flex justify-center ">
                 {children}
             </main>
             <Footer />

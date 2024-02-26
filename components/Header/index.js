@@ -1,15 +1,13 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 const Header = () => {
     return (
-        <header className=" w-full py-4 bg-white text-black shadow-md">
-            <div className="flex items-center justify-between gap-4 px-4">
+        <header className=" w-screen p-5 bg-white text-black shadow-md">
+            <div className="flex items-center justify-between">
                 <Link href="/" className="flex items-center">
-                    
-                        <p className="text-xl">Nissey <span className="font-bold text-red-500">Motors</span></p>
-                        <img src="/logo.png" alt="Nissey Motors" style={{ maxWidth: '6rem', height: 'auto' }} />
-                  
+                    <p className="text-xl">Nissey <span className="font-bold text-red-500">Motors</span></p>
                 </Link>
 
                 <nav className="space-x-6">

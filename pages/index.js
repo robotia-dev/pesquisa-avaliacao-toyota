@@ -53,48 +53,26 @@ const IndexPage = () => {
   return (
     <div className='w-4/5'>
 
-      <form onSubmit={handleSubmit} className='flex items-center justify-center'>
+      <form onSubmit={handleSubmit} className=''>
         <input type="hidden" name="access_key" value="SECRET_KEY_ACCESS " />
 
         {stepVisibility.step1 && (
 
-          <div className='flex flex-col items-center p-9'>
+          <div className='flex flex-col items-center justify-center p-9'>
 
-            <h2 className="font-medium p-9">
+            <h2 className="font-medium text-center p-9">
               O quando o(a) senhor(a) recomendaria os nossos servicos ?
             </h2>
 
 
 
-            <div style={{ width: '550px' }}>
+            <div >
               <div className="flex bg-white shadow-xl border border-gray-300 rounded-xl bg-gray-50">
                 <div className="flex flex-col">
                   <span className='bg-red-500 p-2 text-center text-white rounded-tl-lg'>  Destratores</span>
                   <div className='flex justify-between'>
 
-                    <div>
-
-                      <input
-                        type="radio"
-                        id="zero"
-                        name="nps"
-                        value="0"
-                        className="navigate peer hidden"
-                        data-step="2"
-                        onChange={handleRadioChange}
-                      />
-                      <label
-                        htmlFor="zero"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
-                      >
-                        <span className='pb-3'>
-
-                          <Image src='Unhappy-Face.svg' width={30} height={30} alt='unHappy-Face' />
-                        </span>
-                        0
-                      </label>
-
-                    </div>
+                   
                     <div>
 
                       <input
