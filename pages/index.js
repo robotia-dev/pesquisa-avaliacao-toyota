@@ -69,7 +69,7 @@ const IndexPage = () => {
             <div className=''>
               <div className="flex bg-white shadow-xl border border-gray-300 rounded-xl bg-gray-50">
                 <div className="flex flex-col">
-                  <span className='bg-red-500 p-2 text-center text-white rounded-tl-lg'>  Destratores</span>
+                  <span className='bg-red-500 p-2 text-center text-white rounded-tl-lg'> </span>
                   <div className='flex justify-between'>
 
                    
@@ -215,7 +215,7 @@ const IndexPage = () => {
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <div className='bg-yellow-500 p-2 text-center text-white '>  Neutros </div>
+                  <div className='bg-yellow-500 p-2 text-center text-white '>   </div>
                   <div className='flex justify-between'>
 
                     <div>
@@ -268,7 +268,7 @@ const IndexPage = () => {
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <div className='bg-green-500 p-2 text-center text-white rounded-tr-lg'>  Promotores </div>
+                  <div className='bg-green-500 p-2 text-center text-white rounded-tr-lg'>   </div>
                   <div className='flex justify-between'>
 
                     <div>
@@ -371,7 +371,7 @@ const IndexPage = () => {
       )}
 
       <div className="flex justify-center">
-        <Image src='/logo.png' width={200} height={200} />
+        <Image src='/nissey-logo.png' width={150} height={150} />
       </div>
 
     </div>
