@@ -58,9 +58,9 @@ const IndexPage = () => {
 
         {stepVisibility.step1 && (
 
-          <div className='flex flex-col items-center justify-center p-9'>
+          <div className='flex flex-col items-center justify-center mt-9 mb-9'>
 
-            <h2 className="font-medium text-center p-9">
+            <h2 className="font-medium text-center mt-9 mb-9">
               O quando o(a) senhor(a) recomendaria os nossos servicos ?
             </h2>
 
@@ -86,7 +86,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="um"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mx-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
@@ -109,7 +109,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="dois"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
@@ -132,7 +132,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="tres"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
@@ -155,7 +155,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="quatro"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
@@ -178,7 +178,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="cinco"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
@@ -201,7 +201,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="seis"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
@@ -231,7 +231,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="sete"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className="pb-3">
 
@@ -254,7 +254,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="oito"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium  "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium  "
                       >
                         <span className="pb-3">
 
@@ -284,7 +284,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="nove"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
@@ -307,7 +307,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="dez"
-                        className="flex flex-col p-3 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
