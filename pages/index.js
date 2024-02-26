@@ -359,8 +359,8 @@ const IndexPage = () => {
 
 
       {stepVisibility.step3 && (
-        <div className="step flex flex-col items-center" id="step3">
-          <h2 className="mx-auto text-center text-xl font-bold">
+        <div className="flex flex-col items-center p-9">
+          <h2 className="mx-auto text-center text-xl font-bold p-9">
             Obrigado por participar de nossa pesquisa!
           </h2>
           <div className="mt-4 ">
