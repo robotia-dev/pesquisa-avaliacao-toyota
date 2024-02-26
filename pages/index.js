@@ -370,7 +370,7 @@ const IndexPage = () => {
         </div>
       )}
 
-      <div className="flex justify-center">
+      <div className="flex justify-center ">
         <Image src='/nissey-logo.png' width={150} height={150} />
       </div>
 
