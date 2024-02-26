@@ -77,7 +77,7 @@ const IndexPage = () => {
 
                       <input
                         type="radio"
-                        id="um"
+                        id="0"
                         name="nps"
                         value="1"
                         className="navigate peer hidden"
@@ -85,8 +85,31 @@ const IndexPage = () => {
                         onChange={handleRadioChange}
                       />
                       <label
-                        htmlFor="um"
+                        htmlFor="0"
                         className="flex flex-col py-2 mx-2 cursor-pointer items-center justify-center text-lg font-medium "
+                      >
+                        <span className='pb-3'>
+
+                          <Image src='Unhappy-Face.svg' width={30} height={30} alt='unHappy-Face' />
+                        </span>
+                        0
+                      </label>
+
+                    </div>
+                    <div>
+
+                      <input
+                        type="radio"
+                        id="um"
+                        name="nps"
+                        value="2"
+                        className="navigate peer hidden"
+                        data-step="2"
+                        onChange={handleRadioChange}
+                      />
+                      <label
+                        htmlFor="um"
+                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
