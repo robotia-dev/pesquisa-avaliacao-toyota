@@ -86,7 +86,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="0"
-                        className="flex flex-col py-2 mx-2 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 ml-1 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
@@ -330,7 +330,7 @@ const IndexPage = () => {
                       />
                       <label
                         htmlFor="dez"
-                        className="flex flex-col py-2 mr-2 cursor-pointer items-center justify-center text-lg font-medium "
+                        className="flex flex-col py-2 mr-1 cursor-pointer items-center justify-center text-lg font-medium "
                       >
                         <span className='pb-3'>
 
