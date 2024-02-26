@@ -66,7 +66,7 @@ const IndexPage = () => {
 
 
 
-            <div >
+            <div className=''>
               <div className="flex bg-white shadow-xl border border-gray-300 rounded-xl bg-gray-50">
                 <div className="flex flex-col">
                   <span className='bg-red-500 p-2 text-center text-white rounded-tl-lg'>  Destratores</span>
@@ -331,10 +331,10 @@ const IndexPage = () => {
 
         {stepVisibility.step2 && (
           <div className='flex flex-col items-center p-9'>
-            <h2 className="font-medium p-9">
+            <h2 className="font-medium text-center p-9">
               Gostaria de deixar uma sugestão?
             </h2>
-            <div style={{width: '500px'}}>
+            <div className='w-96'>
               <textarea
                 name="sugestao"
                 rows="4"
