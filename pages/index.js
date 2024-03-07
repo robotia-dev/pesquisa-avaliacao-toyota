@@ -1,17 +1,22 @@
+'use client'
 import React, { useState } from 'react';
+import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 const IndexPage = () => {
+  const searchParams = useSearchParams();
+  const empresa = searchParams.get('empresa');
+  const revenda = searchParams.get('revenda');
+  const caixa = searchParams.get('caixa');
+
   const [stepVisibility, setStepVisibility] = useState({
     step1: true,
     step2: false,
     step3: false
   });
   const [selectedValue, setSelectedValue] = useState(null);
-  const [formData, setFormData] = useState({});
-
+  
   const handleRadioChange = (event) => {
-    setSelectedValue(event.target.value);
-    setFormData({ ...formData, nps: event.target.value })
+    setSelectedValue(event.target.value); 
 
     setStepVisibility({
       step1: false,
@@ -26,27 +31,35 @@ const IndexPage = () => {
     });
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     if (!selectedValue) {
       alert('Por favor selecione um valor antes de enviar.');
-      return;
+      handleBack();
     }
 
-    const additionalData = {
-      sugestao: event.target.sugestao.value,
-    }
+    let textarea = document.querySelector('#sugestao');
+   
+    const response = await fetch(`http://10.15.32.11:8000/search_pesquisa_satisfacao/?empresa=${}&revenda=${}&caixa=${}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-secret-key': process.env.SECRET_KEY,
+      },
+      body: JSON.stringify({
+        'nota': selectedValue,
+        'comentario': textarea.value,
+        empresa,
+        revenda,
+        caixa
+      })
+    })
 
     setStepVisibility({
       step2: false,
       step3: true,
     });
-
-    console.log('FormData:', {
-      ...formData,
-      ...additionalData
-    })
 
   }
 
@@ -364,6 +377,7 @@ const IndexPage = () => {
                 rows="4"
                 className="w-screen rounded-md border bg-white shadow-xl border-gray-400 focus:border-indigo-500 p-2"
                 placeholder="escreva sua Sugestão..."
+                id='sugestao'
               />
              </div>
             <div className="relative mr-5 mt-2"> <a href="#!" onClick={handleBack} className="absolute top-0 right-0 navigate underline text-gray-500 text-sm" data-step="1">  Voltar</a> </div>
@@ -373,6 +387,7 @@ const IndexPage = () => {
               <button
                 type="submit"
                 className="px-10 py-2 rounded-md border bg-white text-lg font-medium shadow border-gray-400"
+                onClick={handleSubmit}
               >
                 Enviar
               </button>
