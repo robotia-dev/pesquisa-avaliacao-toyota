@@ -6,9 +6,19 @@ import { useEffect } from 'react';
 const Form = (data) => {
   const [values, setValues] = useState();
 
-  useEffect(({empresa, revenda, caixa}  = data) => {
+  const [stepVisibility, setStepVisibility] = useState({
+    step1: true,
+    step2: false,
+    step3: false
+  });
+  const [selectedValue, setSelectedValue] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+
+
+  useEffect(({ empresa, revenda, caixa } = data) => {
     console.log('entrou')
-   
+
     fetch(`http://10.15.32.11:8000/search_pesquisa_satisfacao/?empresa=${Number(empresa)}&revenda=${Number(revenda)}&caixa=${Number(caixa)}`, {
       method: 'GET',
       headers: {
@@ -19,25 +29,19 @@ const Form = (data) => {
     })
       .then(response => response.json())
       .then(data => {
-       
-        let participacao = data.filter(atendimento => atendimento.participacao_pesquisa_satisfacao === 1);
-        let atendimento = participacao.map(atendimento => atendimento.numero_atendimento);
-        let maiorValor = Math.max(...atendimento);
-        let participante = participacao.filter(atendimento => atendimento.numero_atendimento === maiorValor);
-         setValues(...participante)
 
+        const participante = data
+          .filter(atendimento => atendimento.participacao_pesquisa_satisfacao === 1)
+          .reduce((maxAtendimento, atendimento) =>
+            atendimento.numero_atendimento > maxAtendimento.numero_atendimento ? atendimento : maxAtendimento
+          );
+        setValues(...participante);
+        console.log(participante)
       })
       .catch(error => (console.log(error)))
 
-      console.log(values)
-  }, [data.caixa])
- 
-  const [stepVisibility, setStepVisibility] = useState({
-    step1: true,
-    step2: false,
-    step3: false
-  });
-  const [selectedValue, setSelectedValue] = useState(null);
+    console.log(values)
+  }, [data])
 
   const handleRadioChange = (event) => {
     setSelectedValue(event.target.value);
@@ -73,22 +77,23 @@ const Form = (data) => {
     }
 
     try {
-      const response = await fetch(`http://10.15.32.11:8000/send_nota_atendimento`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-secret-key': 'sua_chave_secreta',
-        'Accept': '*/*'
-      },
-      body: JSON.stringify(formData)
-    })
-      console.log(await response.json())
+      setLoading(true)
+      await fetch(`http://10.15.32.11:8000/send_nota_atendimento`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-secret-key': 'sua_chave_secreta',
+          'Accept': '*/*'
+        },
+        body: JSON.stringify(formData)
+      })
 
     } catch (error) {
-      console.log(error)
+      console.log('Request Error:', error)
+      setLoading(false)
     }
 
-
+    setLoading(false)
     setStepVisibility({
       step2: false,
       step3: true,
@@ -422,32 +427,46 @@ const Form = (data) => {
                 className="px-10 py-2 rounded-md border bg-white text-lg font-medium shadow border-gray-400"
                 onClick={handleSubmit}
               >
-                Enviar
+                {loading
+                  ?
+                  <>
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    processando...
+                  </>
+                  :
+                  'enviar'
+                }
               </button>
             </div>
           </div>
-        )}
+        )
+        }
 
-      </form>
+      </form >
 
 
-      {stepVisibility.step3 && (
-        <div className="flex flex-col items-center p-9">
-          <h2 className="mx-auto text-center text-xl font-bold p-9">
-            Obrigado por participar de nossa pesquisa!
-          </h2>
-          <div className="mt-4 ">
-            <Image src='/checkmark.svg' width={300} height={300} alt='check mark' />
+      {
+        stepVisibility.step3 && (
+          <div className="flex flex-col items-center p-9">
+            <h2 className="mx-auto text-center text-xl font-bold p-9">
+              Obrigado por participar de nossa pesquisa!
+            </h2>
+            <div className="mt-4 ">
+              <Image src='/checkmark.svg' width={300} height={300} alt='check mark' />
+            </div>
+
           </div>
+        )
+      }
 
-        </div>
-      )}
-
-      <div className="flex justify-center ">
+      < div className="flex justify-center " >
         <Image src='/nissey-logo.png' width={150} height={150} />
-      </div>
+      </div >
 
-    </div>
+    </div >
   );
 }
 
