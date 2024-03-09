@@ -19,7 +19,7 @@ const Form = (data) => {
   useEffect(({ empresa, revenda, caixa } = data) => {
     console.log('entrou')
 
-    fetch(`http://10.15.32.11:8000/search_pesquisa_satisfacao/?empresa=${Number(empresa)}&revenda=${Number(revenda)}&caixa=${Number(caixa)}`, {
+    fetch(`http://10.14.152.15:8000/search_pesquisa_satisfacao/?empresa=${Number(empresa)}&revenda=${Number(revenda)}&caixa=${Number(caixa)}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const Form = (data) => {
 
     try {
       setLoading(true)
-      await fetch(`http://10.15.32.11:8000/send_nota_atendimento`, {
+      await fetch(`http://10.14.152.15:8000/send_nota_atendimento`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
