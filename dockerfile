@@ -1,29 +1,22 @@
 # Use a imagem oficial do Node.js como base
-FROM node:14 AS build
+FROM node:20-slim
 
 # Defina o diretório de trabalho
-WORKDIR /app
+WORKDIR /home/node/app
 
-# Copie o package.json e o yarn.lock para o diretório de trabalho
-COPY package.json json.lock.json ./
+# Copie o package.json 
+COPY package.json ./
 
 # Instale as dependências
-RUN npm install
+RUN yarn install
 
 # Copie o código-fonte do aplicativo
 COPY . .
 
 # Execute o build do Next.js
-RUN npm run build
+RUN yarn build
 
-# Use a imagem oficial do NGINX como base
-FROM nginx:alpine
+EXPOSE 3000
 
-# Copie os arquivos de build do Next.js para o diretório de publicação do NGINX
-COPY --from=build /app/out /usr/share/nginx/html
+CMD [ "npm", "start" ]
 
-# Exponha a porta 80
-EXPOSE 80
-
-# Inicie o NGINX
-CMD ["nginx", "-g", "daemon off;"]
