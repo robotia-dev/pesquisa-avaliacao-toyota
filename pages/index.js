@@ -2,7 +2,6 @@
 import React from 'react';
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react';
-import { useEffect } from 'react';
 import Image from 'next/image'
 import Form from '../components/Form'
 
@@ -12,8 +11,8 @@ const IndexPage = () => {
   const searchParams = useSearchParams();
 
   const [params, setParams] = useState({ empresa: 0, revenda: 0, caixa: 0 });
- if(typeof window !== undefined) {
-  useEffect(() => {
+
+  const getParams = ()=> {
     const empresa = searchParams.get('empresa');
     const revenda = searchParams.get('revenda');
     const caixa = searchParams.get('caixa');
@@ -27,9 +26,9 @@ const IndexPage = () => {
         caixa
       })
     }
-    return;
-  }, [params])
- } 
+  }
+
+  setInterval(getParams, 10000)
   
 
   if (params.caixa) {
