@@ -29,7 +29,7 @@ const IndexPage = () => {
     }
   }
 
-  setInterval(getParams, 10000)
+  setInterval(getParams, 10000);
 
   if (params.caixa) {
     return <Form {...params} />
