@@ -1,22 +1,14 @@
-# Use a imagem oficial do Node.js como base
-FROM node:20-slim
-
-# Defina o diretório de trabalho
-WORKDIR /home/node/app
-
-# Copie o package.json 
-COPY package.json ./
-
-# Instale as dependências
+FROM node:20 AS builder
+WORKDIR /app
+COPY package.json yarn.lock ./
 RUN yarn install
-
-# Copie o código-fonte do aplicativo
 COPY . .
-
-# Execute o build do Next.js
 RUN yarn build
 
-EXPOSE 3000
-
-CMD [ "yarn", "start" ]
-
+# Estágio de produção
+FROM node:20 AS production
+WORKDIR /app
+COPY --from=builder /app/.next ./.next
+COPY package.json yarn.lock ./
+RUN yarn install --production
+CMD ["yarn", "start"]

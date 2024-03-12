@@ -6,9 +6,9 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL=http://localhost:3000
+      - NEXT_PUBLIC_API_URL=http://10.11.11.21:3000
     volumes:
-      - .:/home/node/app
+      - .:/app
 
   nginx:
     build:
