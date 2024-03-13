@@ -1,14 +1,14 @@
 FROM node:20 AS builder
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install
+COPY package.json package-lock.json ./
+RUN npm ci
 COPY . .
-RUN yarn build
+RUN npm run build
 
 # Estágio de produção
 FROM node:20 AS production
 WORKDIR /app
 COPY --from=builder /app/.next ./.next
-COPY package.json yarn.lock ./
-RUN yarn install --production
-CMD ["yarn", "start"]
+COPY package.json package-lock.json ./
+RUN npm install --production
+CMD ["npm", "run", "start"]
