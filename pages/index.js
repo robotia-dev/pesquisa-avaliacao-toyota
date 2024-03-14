@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { useSearchParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Image from 'next/image'
@@ -26,10 +26,12 @@ const IndexPage = () => {
         revenda,
         caixa
       })
+      
+      clearInterval(intervalID);
     }
   }
 
-  setInterval(getParams, 10000);
+  const intervalID = setInterval(getParams, 1000);
 
   if (params.caixa) {
     return <Form {...params} />

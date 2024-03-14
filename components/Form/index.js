@@ -17,31 +17,25 @@ const Form = (data) => {
 
 
   useEffect(({ empresa, revenda, caixa } = data) => {
-    console.log('entrou')
-
-    fetch(`http://10.14.152.15:8000/search_pesquisa_satisfacao/?empresa=${Number(empresa)}&revenda=${Number(revenda)}&caixa=${Number(caixa)}`, {
+     fetch(`http://10.15.32.11:8000/search_pesquisa_satisfacao/?empresa=${empresa}&revenda=${revenda}&caixa=${caixa}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'x-secret-key': 'sua_chave_secreta',
-      },
-      next: { revalidate: 10 }
+      }
     })
-      .then(response => response.json())
-      .then(data => {
+    .then(response => response.json())
+    .then(data => {
 
-        const participante = data
-          .filter(atendimento => atendimento.participacao_pesquisa_satisfacao === 1)
-          .reduce((maxAtendimento, atendimento) =>
-            atendimento.numero_atendimento > maxAtendimento.numero_atendimento ? atendimento : maxAtendimento
-          );
-        setValues(...participante);
-        console.log(participante)
-      })
-      .catch(error => (console.log(error)))
-
-    console.log(values)
-  }, [data])
+      const participante = data
+        .filter(atendimento => atendimento.participacao_pesquisa_satisfacao === 1)
+        .reduce((maxAtendimento, atendimento) =>
+          atendimento.numero_atendimento > maxAtendimento.numero_atendimento ? atendimento : maxAtendimento,
+        );
+        setValues(participante);
+    })
+    .catch(error => console.log(error));
+  }, [])
 
   const handleRadioChange = (event) => {
     setSelectedValue(event.target.value);
@@ -72,7 +66,7 @@ const Form = (data) => {
       ...data,
       'nota': selectedValue,
       'comentario': textarea.value,
-      'cliente': 3,
+      'cliente': values.cliente,
       'atendimento': values.numero_atendimento,
     }
 
@@ -103,14 +97,13 @@ const Form = (data) => {
 
   return (
     <div className='w-4/5'>
-
       <form onSubmit={handleSubmit} className=''>
         <input type="hidden" name="access_key" value="SECRET_KEY_ACCESS " />
 
         {stepVisibility.step1 && (
-
-          <div className='flex flex-col items-center justify-center mt-9 mb-9'>
-
+          
+          <div className='flex flex-col items-center justify-center mt-40 mb-9'>
+            
             <h2 className="font-medium text-center mt-9 mb-9">
               O quando o(a) senhor(a) {values && values.nome_cliente} recomendaria os nossos servicos ?
             </h2>
@@ -404,7 +397,7 @@ const Form = (data) => {
         )}
 
         {stepVisibility.step2 && (
-          <div className='flex flex-col items-center p-9'>
+          <div className='flex flex-col items-center mt-40 p-9'>
             <h2 className="font-medium text-center p-9">
               Gostaria de deixar uma sugestão?
             </h2>
@@ -430,11 +423,10 @@ const Form = (data) => {
                 {loading
                   ?
                   <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin mx-3 h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    processando...
                   </>
                   :
                   'enviar'
@@ -450,7 +442,7 @@ const Form = (data) => {
 
       {
         stepVisibility.step3 && (
-          <div className="flex flex-col items-center p-9">
+          <div className="flex flex-col items-center mt-40 p-9">
             <h2 className="mx-auto text-center text-xl font-bold p-9">
               Obrigado por participar de nossa pesquisa!
             </h2>
@@ -463,7 +455,7 @@ const Form = (data) => {
       }
 
       < div className="flex justify-center " >
-        <Image src='/nissey-logo.png' width={150} height={150} />
+        <Image src='/nissey-logo.png' width={150} height={150} alt='logo nissey' />
       </div >
 
     </div >
