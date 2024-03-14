@@ -1,15 +1,28 @@
-# Estágio de builder
-FROM node:20 AS builder
-WORKDIR /home/node/app
-COPY package.json package-lock.json ./
-RUN npm ci
+FROM node
+
+# Defina o diretório de trabalho
+WORKDIR /usr/src/pesquisa
+
+# Copie os arquivos de pacote.json e package-lock.json
+COPY package*.json ./
+
+# Instale as dependências
+
+# Copie os arquivos restantes
 COPY . .
+
+
+RUN npm install
+
+
+# Defina as variáveis de ambiente
+ENV PORT=3333
+
+# Instale o Next.js globalmente
+RUN npm install -g next
+
+# Construa a aplicação
 RUN npm run build
 
-# Estágio de produção
-FROM node:20 AS production
-WORKDIR /home/node/app
-COPY --from=builder /home/node/app/.next ./home/node/.next
-COPY package.json package-lock.json ./
-RUN npm install --production
-CMD ["npm", "run", "start"]
+# Inicie o servidor
+CMD ["npm", "run","build"]
