@@ -3,7 +3,7 @@ services:
   nextjs:
     build: .
     ports:
-      - "3000:3000"
+      - "3333:3333"
     environment:
       - NODE_ENV=production
       - NEXT_PUBLIC_API_URL=http://10.11.11.21:3000
