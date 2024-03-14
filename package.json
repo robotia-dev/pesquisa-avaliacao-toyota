@@ -4,9 +4,9 @@
   "description": "Programa de controle de pesquisa de satisfação com cupom de desconto.",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 3333",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3333",
     "lint": "next lint"
   },
   "repository": "git+https://github.com/alexandrebekor/webapp-satisfaction-survey.git",
