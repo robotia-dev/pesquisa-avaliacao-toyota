@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import '../styles/globals.css'
 import Layout from '../components/Layout'
 
-const MyApp = ({Component, pageProps}) => {
+const MyApp = ({ Component, pageProps }) => {
     return (
         <Layout>
-            <Component {...pageProps} />
+            <Suspense>
+                <Component {...pageProps} />
+            </Suspense>
         </Layout>
     )
 }

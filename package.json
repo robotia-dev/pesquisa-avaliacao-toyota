@@ -1,22 +1,14 @@
 {
   "name": "webapp-satisfaction-survey",
   "version": "1.0.0",
-  "description": "Programa de controle de pesquisa de satisfação com cupom de desconto.",
+  "description": "Programa de controle de pesquisa de satisfação",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 3333",
     "build": "next build",
     "start": "next start -p 3333",
     "lint": "next lint"
-  },
-  "repository": "git+https://github.com/alexandrebekor/webapp-satisfaction-survey.git",
-  "keywords": [],
-  "author": "Alexandre Bekor (Agência Bekor)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alexandrebekor/webapp-satisfaction-survey/issues"
-  },
-  "homepage": "https://github.com/alexandrebekor/webapp-satisfaction-survey#readme",
+  },  
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
